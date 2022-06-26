@@ -79,4 +79,28 @@ class ViewModel: ObservableObject {
         
         return nil
     }
+    
+    // Given a string, what's the array of symbols that match?
+    func results(for search: String) -> [Symbol] {
+        let lowercaseSearch = search.lowercased()
+        
+        return symbols.filter { symbol in
+            
+            // Exact match
+            if symbol.name.contains(lowercaseSearch) {
+                return true
+            }
+            
+            // Match on synonyms
+            if let synonyms = symbol.synonyms {
+                for synonym in synonyms {
+                    if synonym.contains(lowercaseSearch) {
+                        return true
+                    }
+                }
+            }
+            
+            return false
+        }
+    }
 }

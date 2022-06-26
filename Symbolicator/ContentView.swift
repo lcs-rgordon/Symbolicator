@@ -11,21 +11,32 @@ struct ContentView: View {
     
     @StateObject var viewModel = ViewModel()
     
+    @State private var searchText = ""
+    
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    ForEach(viewModel.specialCategories) { category in
-                        CategoryRow(category: category)
-                    }
-                }
-                
-                Section {
-                    ForEach(viewModel.regularCategories) { category in
-                        CategoryRow(category: category)
-                    }
-                }
+            
+            Group {
+                if searchText.isEmpty {
+                    List {
+                        Section {
+                            ForEach(viewModel.specialCategories) { category in
+                                CategoryRow(category: category)
+                            }
+                        }
+                        
+                        Section {
+                            ForEach(viewModel.regularCategories) { category in
+                                CategoryRow(category: category)
+                            }
+                        }
 
+                    }
+                } else {
+                    let category = Category(name: "Results", icon: "magnifiyingglass", isSpecial: false)
+                    
+                    CategoryView(category: category, symbols: viewModel.results(for: searchText))
+                }
             }
             .navigationTitle("Symbolicator")
             .navigationDestination(for: Category.self) { selectedCategory in
@@ -33,6 +44,9 @@ struct ContentView: View {
             }
         }
         .environmentObject(viewModel)
+        .searchable(text: $searchText)
+        .autocorrectionDisabled() // Don't try to fix typos for what the user search
+        
     }
 }
 
