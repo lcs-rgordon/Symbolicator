@@ -28,6 +28,9 @@ struct ContentView: View {
 
             }
             .navigationTitle("Symbolicator")
+            .navigationDestination(for: Category.self) {
+                CategoryView(category: $0, symbols: viewModel.symbols(for: $0))
+            }
         }
         .environmentObject(viewModel)
     }
