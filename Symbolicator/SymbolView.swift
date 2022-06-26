@@ -61,6 +61,9 @@ struct SymbolView: View {
         }
         .padding()
         .contentShape(Rectangle())  // Make the whole area tappable
+        .accessibilityElement()
+        .accessibilityLabel(symbol.name)
+        .accessibilityHint(hint)
         .contextMenu {
             Button {
                 UIPasteboard.general.string = symbol.name
@@ -95,6 +98,22 @@ struct SymbolView: View {
         case "Black": return .black
         default: return .regular
         }
+    }
+    
+    var hint: String {
+        var result = ""
+        
+        if let version = viewModel.iOSVersion(for: symbol) {
+            result += "\(version)."
+        } else {
+            result += "iOS 13+."
+        }
+        
+        if let restrictions = symbol.restrictions {
+            result += "\(restrictions)"
+        }
+        
+        return result
     }
 }
 
