@@ -24,11 +24,12 @@ struct SymbolView: View {
             
         }
         .padding()
+        .contentShape(Rectangle())  // Make the whole area tappable
         .contextMenu {
             Button {
                 UIPasteboard.general.string = symbol.name
             } label: {
-                Label("Copy name", systemImage: "doc.copy")
+                Label("Copy name", systemImage: "doc.on.doc")
             }
         }
     }
