@@ -18,6 +18,8 @@
 		815A653B2868BFE9005403CC /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A653A2868BFE9005403CC /* CategoryRow.swift */; };
 		815A653D2868C119005403CC /* SymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A653C2868C119005403CC /* SymbolView.swift */; };
 		815A653F2868C1A3005403CC /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A653E2868C1A3005403CC /* CategoryView.swift */; };
+		815A65412868C91C005403CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A65402868C91C005403CC /* SettingsView.swift */; };
+		815A65432868CA0B005403CC /* Color-RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A65422868CA0B005403CC /* Color-RawRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		815A653A2868BFE9005403CC /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		815A653C2868C119005403CC /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
 		815A653E2868C1A3005403CC /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		815A65402868C91C005403CC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		815A65422868CA0B005403CC /* Color-RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-RawRepresentable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 			children = (
 				815A65242868BBDC005403CC /* SymbolicatorApp.swift */,
 				815A65262868BBDC005403CC /* ContentView.swift */,
+				815A65402868C91C005403CC /* SettingsView.swift */,
+				815A65422868CA0B005403CC /* Color-RawRepresentable.swift */,
 				815A653C2868C119005403CC /* SymbolView.swift */,
 				815A653E2868C1A3005403CC /* CategoryView.swift */,
 				815A65342868BC56005403CC /* Category.swift */,
@@ -160,8 +166,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				815A65392868BDD9005403CC /* ViewModel.swift in Sources */,
+				815A65432868CA0B005403CC /* Color-RawRepresentable.swift in Sources */,
 				815A65272868BBDC005403CC /* ContentView.swift in Sources */,
 				815A653B2868BFE9005403CC /* CategoryRow.swift in Sources */,
+				815A65412868C91C005403CC /* SettingsView.swift in Sources */,
 				815A65372868BCDC005403CC /* Symbol.swift in Sources */,
 				815A65252868BBDC005403CC /* SymbolicatorApp.swift in Sources */,
 				815A65352868BC56005403CC /* Category.swift in Sources */,
