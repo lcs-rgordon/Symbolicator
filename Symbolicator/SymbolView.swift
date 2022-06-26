@@ -13,6 +13,9 @@ struct SymbolView: View {
     
     let symbol: Symbol
     
+    // Closure to call when button is activated
+    var showRestrctionsAction: () -> Void
+    
     var body: some View {
         
         VStack {
@@ -26,6 +29,16 @@ struct SymbolView: View {
                             .foregroundColor(.secondary)
                             .font(.caption)
                             .padding(5)
+                    }
+                }
+                .overlay(alignment: .bottomTrailing) {
+                    if symbol.restrictions != nil {
+                        Button(action: showRestrctionsAction) {
+                            Image(systemName: "applelogo")
+                                .foregroundColor(.secondary)
+                                .padding(5)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             
@@ -48,6 +61,6 @@ struct SymbolView: View {
 
 struct SymbolView_Previews: PreviewProvider {
     static var previews: some View {
-        SymbolView(symbol: .example)
+        SymbolView(symbol: .example, showRestrctionsAction: { })
     }
 }

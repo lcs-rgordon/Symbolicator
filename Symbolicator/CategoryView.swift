@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CategoryView: View {
     
+    @State private var restrictions: String?
+    @State private var showingRestrictions = false
+    
     let category: Category
     let symbols: [Symbol]
     
@@ -16,12 +19,22 @@ struct CategoryView: View {
         ScrollView {
             LazyVGrid(columns: [.init(.adaptive(minimum: 200, maximum: 200))]) {
                 ForEach(symbols) { symbol in
-                    SymbolView(symbol: symbol)
+                    SymbolView(symbol: symbol) {
+                        restrictions = symbol.restrictions
+                        showingRestrictions = true
+                    }
                 }
             }
         }
         .navigationTitle(category.name)
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Restricted Use", isPresented: $showingRestrictions, presenting: restrictions) { restriction in
+            
+            Button("OK") { }
+            
+        } message: { restriction in
+            Text(restriction)
+        }
     }
 }
 
