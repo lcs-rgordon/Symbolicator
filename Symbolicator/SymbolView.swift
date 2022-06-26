@@ -10,6 +10,15 @@ import SwiftUI
 struct SymbolView: View {
     
     @EnvironmentObject var viewModel: ViewModel
+
+    @AppStorage("rendering") var rendering = "Automatic"
+    @AppStorage("weight") var weight = "Regular"
+    @AppStorage("variableValue") var variableValue = 1.0
+    
+    @AppStorage("color1") var color1 = Color.black
+    @AppStorage("color2") var color2 = Color.blue
+    @AppStorage("color3") var color3 = Color.mint
+
     
     let symbol: Symbol
     
@@ -19,9 +28,12 @@ struct SymbolView: View {
     var body: some View {
         
         VStack {
-            Image(systemName: symbol.name)
+            Image(systemName: symbol.name, variableValue: variableValue)
                 .font(.system(size: 72))
                 .frame(width: 150, height: 150) // ensure all icons use same amount of space
+                .symbolRenderingMode(renderingMode)
+                .foregroundStyle(rendering == "Automatic" ? .primary : color1, color2, color3)
+                .fontWeight(fontWeight)
                 .overlay(RoundedRectangle(cornerRadius: 5).stroke(.quaternary))
                 .overlay(alignment: .bottomLeading) {
                     if let version = viewModel.iOSVersion(for: symbol) {
@@ -55,6 +67,33 @@ struct SymbolView: View {
             } label: {
                 Label("Copy name", systemImage: "doc.on.doc")
             }
+        }
+    }
+    
+    var renderingMode: SymbolRenderingMode {
+        switch rendering {
+        case "Hierarchical":
+            return .hierarchical
+        case "Multicolor":
+            return .multicolor
+        case "Palette":
+            return .palette
+        default:
+            return .monochrome
+        }
+    }
+    
+    var fontWeight: Font.Weight {
+        switch weight {
+        case "Ultra Light": return .ultraLight
+        case "Thin": return .thin
+        case "Light": return .light
+        case "Medium": return .medium
+        case "Semibold": return .semibold
+        case "Body": return .bold
+        case "Heavy": return .heavy
+        case "Black": return .black
+        default: return .regular
         }
     }
 }
