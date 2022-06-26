@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SymbolView: View {
     
+    @EnvironmentObject var viewModel: ViewModel
+    
     let symbol: Symbol
     
     var body: some View {
@@ -18,6 +20,14 @@ struct SymbolView: View {
                 .font(.system(size: 72))
                 .frame(width: 150, height: 150) // ensure all icons use same amount of space
                 .overlay(RoundedRectangle(cornerRadius: 5).stroke(.quaternary))
+                .overlay(alignment: .bottomLeading) {
+                    if let version = viewModel.iOSVersion(for: symbol) {
+                        Text(version)
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                            .padding(5)
+                    }
+                }
             
             Text(symbol.name)
                 .multilineTextAlignment(.center)

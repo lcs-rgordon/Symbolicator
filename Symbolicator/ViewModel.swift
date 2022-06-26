@@ -66,4 +66,17 @@ class ViewModel: ObservableObject {
             return result
         }
     }
+    
+    // Find what iOS version a given symbol was introduced within
+    func iOSVersion(for symbol: Symbol) -> String? {
+        if let introductionYear = symbol.availability["base"] {
+            if introductionYear != "2019" {
+                if let version = releases[introductionYear]?["iOS"] {
+                    return "\(version)+"
+                }
+            }
+        }
+        
+        return nil
+    }
 }
