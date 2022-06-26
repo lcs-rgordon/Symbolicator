@@ -24,7 +24,13 @@ struct SymbolView: View {
             
         }
         .padding()
-        
+        .contextMenu {
+            Button {
+                UIPasteboard.general.string = symbol.name
+            } label: {
+                Label("Copy name", systemImage: "doc.copy")
+            }
+        }
     }
 }
 
