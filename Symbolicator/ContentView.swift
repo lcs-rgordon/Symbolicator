@@ -14,38 +14,49 @@ struct ContentView: View {
     @State private var searchText = ""
     
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
             
-            Group {
-                if searchText.isEmpty {
-                    List {
-                        Section {
-                            ForEach(viewModel.specialCategories) { category in
-                                CategoryRow(category: category)
+            
+            NavigationStack {
+                
+                Group {
+                    if searchText.isEmpty {
+                        List {
+                            Section {
+                                ForEach(viewModel.specialCategories) { category in
+                                    CategoryRow(category: category)
+                                }
                             }
-                        }
-                        
-                        Section {
-                            ForEach(viewModel.regularCategories) { category in
-                                CategoryRow(category: category)
+                            
+                            Section {
+                                ForEach(viewModel.regularCategories) { category in
+                                    CategoryRow(category: category)
+                                }
                             }
-                        }
 
+                        }
+                    } else {
+                        let category = Category(name: "Results", icon: "magnifiyingglass", isSpecial: false)
+                        
+                        CategoryView(category: category, symbols: viewModel.results(for: searchText))
                     }
-                } else {
-                    let category = Category(name: "Results", icon: "magnifiyingglass", isSpecial: false)
-                    
-                    CategoryView(category: category, symbols: viewModel.results(for: searchText))
+                }
+                .navigationTitle("Symbolicator")
+                .navigationDestination(for: Category.self) { selectedCategory in
+                    CategoryView(category: selectedCategory, symbols: viewModel.symbols(for: selectedCategory))
                 }
             }
-            .navigationTitle("Symbolicator")
-            .navigationDestination(for: Category.self) { selectedCategory in
-                CategoryView(category: selectedCategory, symbols: viewModel.symbols(for: selectedCategory))
-            }
+            .environmentObject(viewModel)
+            .searchable(text: $searchText)
+            .autocorrectionDisabled() // Don't try to fix typos for what the user search
+            
+            SettingsView()
+                .frame(maxHeight: 220)
+                .shadow(radius: 5)
+            
         }
-        .environmentObject(viewModel)
-        .searchable(text: $searchText)
-        .autocorrectionDisabled() // Don't try to fix typos for what the user search
+        
+
         
     }
 }

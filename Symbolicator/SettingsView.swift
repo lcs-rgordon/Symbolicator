@@ -21,7 +21,36 @@ struct SettingsView: View {
     let weights = ["Ultra Light", "Thin", "Light", "Regular", "Medium", "Semibold", "Bold", "Heavy", "Black"]
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Picker("Weight", selection: $weight) {
+                ForEach(weights, id: \.self, content: Text.init)
+            }
+            
+            Picker("Rendering mode", selection: $rendering) {
+                ForEach(renderingModes, id: \.self, content: Text.init)
+            }
+            
+            if rendering != "Automatic" {
+                LabeledContent("Colors") {
+                    HStack {
+                        ColorPicker("Primary color", selection: $color1)
+                        
+                        if rendering == "Palette" {
+                            ColorPicker("Secondary color", selection: $color2)
+                            ColorPicker("Tertiary color", selection: $color3)
+                        }
+                    }
+                    .labelsHidden()
+                }
+            }
+            
+            LabeledContent("Variability") {
+                Slider(value: $variableValue) {
+                    Text("Variable amount")
+                }
+            }
+
+        }
     }
 }
 
