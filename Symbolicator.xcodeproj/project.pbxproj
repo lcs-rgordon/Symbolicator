@@ -15,6 +15,7 @@
 		815A65352868BC56005403CC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A65342868BC56005403CC /* Category.swift */; };
 		815A65372868BCDC005403CC /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A65362868BCDC005403CC /* Symbol.swift */; };
 		815A65392868BDD9005403CC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A65382868BDD9005403CC /* ViewModel.swift */; };
+		815A653B2868BFE9005403CC /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A653A2868BFE9005403CC /* CategoryRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		815A65342868BC56005403CC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		815A65362868BCDC005403CC /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
 		815A65382868BDD9005403CC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		815A653A2868BFE9005403CC /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				815A65362868BCDC005403CC /* Symbol.swift */,
 				815A65382868BDD9005403CC /* ViewModel.swift */,
 				815A65322868BC04005403CC /* symbols.json */,
+				815A653A2868BFE9005403CC /* CategoryRow.swift */,
 				815A65282868BBDD005403CC /* Assets.xcassets */,
 				815A652A2868BBDD005403CC /* Preview Content */,
 			);
@@ -152,6 +155,7 @@
 			files = (
 				815A65392868BDD9005403CC /* ViewModel.swift in Sources */,
 				815A65272868BBDC005403CC /* ContentView.swift in Sources */,
+				815A653B2868BFE9005403CC /* CategoryRow.swift in Sources */,
 				815A65372868BCDC005403CC /* Symbol.swift in Sources */,
 				815A65252868BBDC005403CC /* SymbolicatorApp.swift in Sources */,
 				815A65352868BC56005403CC /* Category.swift in Sources */,
