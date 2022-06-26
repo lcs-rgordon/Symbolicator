@@ -17,6 +17,7 @@ struct SymbolView: View {
             Image(systemName: symbol.name)
                 .font(.system(size: 72))
                 .frame(width: 150, height: 150) // ensure all icons use same amount of space
+                .overlay(RoundedRectangle(cornerRadius: 5).stroke(.quaternary))
             
             Text(symbol.name)
                 .multilineTextAlignment(.center)
