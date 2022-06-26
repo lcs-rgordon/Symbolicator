@@ -21,7 +21,7 @@ struct SymbolView: View {
             
             Text(symbol.name)
                 .multilineTextAlignment(.center)
-                .lineLimit(2)
+                .lineLimit(2...2) // Always exactly two lines of text, so the text views all line up, even there is only one line of text
             
         }
         .padding()
